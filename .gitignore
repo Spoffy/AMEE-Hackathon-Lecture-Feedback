@@ -1,0 +1,9 @@
+#Ignore vim swap files
+**/*.swp
+
+#Ignore generated files
+static/assets/css/*.css
+static/assets/scripts/*.js
+
+#Ignore node modules
+node_modules/
