@@ -11,7 +11,10 @@ Pip
 Bottle Web Framework (Installed via Pip)
 
 For Frontend:
-react-tools (npm package, used to compile jsx)
-Ruby (and Gem package manager)
-Compass (Ruby gem, framework)
+grunt
+grunt-cli (Globally)
+grunt-contrib-less
+grunt-contrib-watch
+grunt-react
+
 
