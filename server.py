@@ -1,14 +1,20 @@
-from bottle import Bottle, route, run, static_file, redirect
+from bottle import Bottle, post, get, run, static_file, redirect, request
+import json
 
 STATIC_FILE_PREFIX='static'
 
 app = Bottle()
 
-@app.route('/')
+@app.post('/post/login')
+def login():
+  print(request.json)
+  return json.dumps(['Rabbit', 'Hedgehog', 'Banana', 'Tristan'])
+
+@app.get('/')
 def default_page():
   return redirect("/static/pages/index.html")
 
-@app.route('/static/<path:path>')
+@app.get('/static/<path:path>')
 def serve_static(path):
   return static_file(path, root=STATIC_FILE_PREFIX)
 
