@@ -10,5 +10,19 @@ html {
 }
 
 #login-logo {
-  height: 20%;
+  @media screen and (min-height: @screen-sm-h) {
+    height: (@screen-sm-h/2);
+  }
+  @media screen and (min-height: @screen-md-h) {
+    height: (@screen-md-h/2);
+  }
+  @media screen and (min-height: @screen-lg-h) {
+    height: (@screen-lg-h/2);
+  }
+  @media screen and (min-height: @screen-xl-h) {
+    height: (@screen-xl-h/2);
+  }
+  @media screen and (max-height: @screen-sm-h) {
+    height: (@screen-sm-h/4);
+  }
 }

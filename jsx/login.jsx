@@ -18,17 +18,25 @@ var Login = React.createClass({
   },
   render: function() {
     return (
-     <form className="pure-form pure-form-stacked">
-        <fieldset>
-          <label for="username">Username</label>
-          <input id="username" type="email" placeholder="Email"/>
-          <button id="submit" 
-                  onClick={this.sendFormData}
-                  className="pure-button pure-button-primary">
-            Sign in
-          </button>
-        </fieldset>
-      </form>
+
+<div>
+  <img src="/static/assets/images/logo.jpg"
+       className="pure-img center-block"
+       id="login-logo"/>
+
+  <form className="pure-form pure-form-stacked">
+    <fieldset>
+      <label for="username">Username</label>
+      <input id="username" type="email" placeholder="Email"/>
+      <button id="submit" 
+              onClick={this.sendFormData}
+              className="pure-button pure-button-primary">
+        Sign in
+      </button>
+    </fieldset>
+  </form>
+</div>
+
     );
   }
 });
