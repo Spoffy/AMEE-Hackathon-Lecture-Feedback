@@ -12,11 +12,21 @@ module.exports = function(grunt) {
       }
     },
     react: {
+      combined_file_output: {
+        files: {
+          'static/assets/scripts/main.js': [
+            'jsx/feedback.jsx',
+            'jsx/list.jsx',
+            'jsx/login.jsx',
+            'jsx/main.jsx'
+          ]
+        }
+      },
       dynamic_mappings: {
         files: [
           {
             expand: true,
-            cwd: 'jsx/',
+            cwd: 'jsx/dynamic',
             src: ['**/*.jsx'],
             dest: 'static/assets/scripts/',
             ext: '.js'
