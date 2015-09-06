@@ -7,21 +7,25 @@ STATIC_FILE_PREFIX='static'
 
 app = Bottle()
 
-def createHash(text):
+def create_hash(text):
   """
     Shennanigan based hashing.
     Mush it into an ascii string.
   """
-  hashObj = hashlib.sha512()
-  hashObj.update(text.encode("utf-8"))
-  return base64.b64encode(hashObj.digest()).decode("ascii")
+  hash_obj = hashlib.sha512()
+  hash_obj.update(text.encode("utf-8"))
+  return base64.b64encode(hash_obj.digest()).decode("ascii")
+
+def get_courses_for_user(user_id):
+  return ["Sample Course 1", "Sample Course 2", "Sample Course 3"]
 
 @app.post('/post/login')
 def login():
   email = request.json.get("email", None);
   if not email: return json.dumps(["No email given."]);
-  response.set_cookie("session_id", createHash(email))
-  return json.dumps(['Rabbit', 'Hedgehog', 'Banana', 'Tristan'])
+  user_id = create_hash(email)
+  response.set_cookie("user_id", user_id)
+  return json.dumps(get_courses_for_user(user_id))
 
 @app.get('/')
 def default_page():
