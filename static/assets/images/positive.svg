@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="positiveV1.svg">
+   sodipodi:docname="positive.svg">
   <defs
      id="defs4">
     <linearGradient
@@ -36,10 +36,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.6274112"
-     inkscape:cx="-4.9157802"
+     inkscape:cx="206.15564"
      inkscape:cy="208.09142"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -96,18 +96,21 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="symbol">
-    <flowRoot
+    <text
        xml:space="preserve"
-       id="flowRoot4208"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#6ddc14;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(4.6515254,0,0,4.915297,-1478.4298,-1911.1468)"><flowRegion
-         id="flowRegion4210"><rect
-           id="rect4212"
-           width="214.15237"
-           height="236.37573"
-           x="256.57874"
-           y="375.55997"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#6ddc14;fill-opacity:1;" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#6ddc14;fill-opacity:1;"
-         id="flowPara4216">+</flowPara></flowRoot>  </g>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:430.34335327px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#6ddc14;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="219.07664"
+       y="356.45523"
+       id="text3346"
+       sodipodi:linespacing="125%"
+       transform="scale(0.97279833,1.0279623)"><tspan
+         sodipodi:role="line"
+         x="219.07664"
+         y="356.45523"
+         id="tspan3348"><tspan
+           x="219.07664"
+           y="356.45523"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:430.34335327px;line-height:125%;font-family:'Arial Black';-inkscape-font-specification:'Arial Black, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#6ddc14;fill-opacity:1"
+           id="tspan3350">+</tspan></tspan></text>
+  </g>
 </svg>
