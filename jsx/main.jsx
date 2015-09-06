@@ -12,8 +12,12 @@ var MainBody = React.createClass({
     });
   },
 
-  onCourseSelected: function(name) {
-    this.setState({current_screen: 2});
+  onCourseSelected: function(show_analytics) {
+    if (show_analytics) {
+      this.setState({current_screen: 3});
+    } else {
+      this.setState({current_screen: 2});
+    }
   },
 
   render: function() {
@@ -24,6 +28,8 @@ var MainBody = React.createClass({
         return <List onCourseSelected={this.onCourseSelected}/>;
       case 2:
         return <FeedbackPanel toPreviousScreen={this.changeToCourseList} />
+      case 3:
+        return <Analytics />
     }
   }
 });

@@ -5,6 +5,12 @@ import json
 import lecture
 
 STATIC_FILE_PREFIX='static'
+COURSES = [
+  "Sample Course 1",
+  "Sample Course 2",
+  "Sample Course 3",
+  "Sample Course 4"
+]
 
 app = Bottle()
 
@@ -17,15 +23,19 @@ def create_hash(text):
   hash_obj.update(text.encode("utf-8"))
   return base64.b64encode(hash_obj.digest()).decode("ascii")
 
+SPEAKERS = [
+  create_hash("letsdothis@alejandro.hack")
+]
+
 def create_course(name, in_progress=False):
   return {"name": name, "in_progress": in_progress}
 
 def get_courses_for_user(user_id):
   return [
-    create_course("Sample Course 1"),
-    create_course("Sample Course 2"),
-    create_course("Sample Course 3", True),
-    create_course("Sample Course 4")
+    create_course(COURSES[0]),
+    create_course(COURSES[1]),
+    create_course(COURSES[2], True),
+    create_course(COURSES[3])
   ]
 
 @app.post('/post/login')
@@ -47,6 +57,7 @@ def select():
   user_id = request.cookies.user_id
   print("Adding ", user_id, " to ", course)
   lecture.add_to_session(course, user_id)
+  return json.dumps({"show_analytics": (user_id in SPEAKERS)})
 
 @app.post('/post/upvote')
 def upvote():

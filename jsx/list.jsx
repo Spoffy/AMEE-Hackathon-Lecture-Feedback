@@ -16,12 +16,16 @@ var List = React.createClass({
   },
 
   itemSelected: function(name) {
-    this.props.onCourseSelected(name);
+    var that = this;
     $.ajax({
       method: "POST",
       url: "/post/select",
       data: JSON.stringify({"course": name}),
-      contentType: "application/json"
+      contentType: "application/json",
+      dataType: "json",
+      success: function(data) {
+        that.props.onCourseSelected(data.show_analytics);
+      }
     });
   },
   createListItem: function(course) {

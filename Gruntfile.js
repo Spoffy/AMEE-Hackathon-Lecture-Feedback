@@ -15,6 +15,7 @@ module.exports = function(grunt) {
       combined_file_output: {
         files: {
           'static/assets/scripts/main.js': [
+            'jsx/analytics.jsx',
             'jsx/feedback.jsx',
             'jsx/list.jsx',
             'jsx/login.jsx',
