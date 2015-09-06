@@ -42,19 +42,11 @@ class Session:
     threshold_time = time() - WARNING_PERIOD
     count = 0
     for (timestamp, _, _) in self.votes_in_period:
-      print("Stamp", timestamp)
-      print("Thresh", threshold_time)
       if timestamp > threshold_time:
         self.votes_in_period = self.votes_in_period[count:]
         return
       count += 1
     self.votes_in_period = list()
-
-  def check_for_events(self):
-    if (len(self.votes_in_period) > 
-       (len(self.participants) * WARNING_PERCENT_THRESHOLD)):
-      #warn()
-      None
 
   def vote(self, user_id, value):
     voteEntry = (time(), user_id, value)
@@ -62,7 +54,6 @@ class Session:
     self.votes_in_period.append(voteEntry)
     self.last_vote[user_id] = time()
     self.trim_period()
-    self.check_for_events()
 
     print("Votes: ", self.votes)
     print("VL: ", len(self.votes))
@@ -81,7 +72,12 @@ class Session:
     return ((_sum_votes_iter(self.votes)/len(self.votes)) + 1)/2
 
   def value_last_period(self, value):
+    self.trim_period()
     return len([x for x in self.votes_in_period if x[2] == value])
+
+  def has_passed_warning_threshold(self):
+    return (self.value_last_period(-1) > 
+           len(self.participants) * WARNING_PERCENT_THRESHOLD)
       
 
 def init_course_session(course):
@@ -115,6 +111,10 @@ def avg_understanding(user_id):
 def value_last_period(user_id, value):
   session = _user_sessions[user_id]
   return session.value_last_period(value)
+
+def has_passed_warning_threshold(user_id):
+  session = _user_sessions[user_id]
+  return session.has_passed_warning_threshold();
 
 def test():
   add_to_session("Course", "John")

@@ -78,7 +78,9 @@ def analytics():
   return json.dumps({
     "average_understanding": lecture.avg_understanding(user_id),
     "upvotes_last_period": lecture.value_last_period(user_id, 1),
-    "downvotes_last_period":lecture.value_last_period(user_id, -1)
+    "downvotes_last_period":lecture.value_last_period(user_id, -1),
+    "passed_warning_threshold": 
+      lecture.has_passed_warning_threshold(user_id)
   });
 
 @app.get('/')

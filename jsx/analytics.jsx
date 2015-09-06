@@ -18,9 +18,9 @@ var StatsView = React.createClass({
 var Analytics = React.createClass({
   getInitialState: function() {
     return {
-      average_understanding: 0,
-      downvotes_last_period: 0,
-      upvotes_last_period: 0
+      average_understanding: "Pending",
+      downvotes_last_period: "Pending",
+      upvotes_last_period: "Pending"
     }
   },
 
@@ -46,7 +46,8 @@ var Analytics = React.createClass({
           that.setState({
             average_understanding: data.average_understanding,
             downvotes_last_period: data.downvotes_last_period,
-            upvotes_last_period: data.upvotes_last_period
+            upvotes_last_period: data.upvotes_last_period,
+            passed_warning_threshold: data.passed_warning_threshold
           });
         },
         "json"
@@ -61,13 +62,20 @@ var Analytics = React.createClass({
     
 <div id="analytics_root">
   <div id="chart_container" className="analytics">
+    <img id="data-graph" className="center-block pure-img" src="/static/assets/images/data_graph.svg" />
   </div> 
-  <div id="data_container" className="pure-g analytics">
-    <div id="checkbox" className="pure-u-2-5 analytics">
-    </div>
-    <div id="stats" className="pure-u-3-5 analytics">
-      <StatsView name="Average Understanding:" value={Math.round(this.state.average_understanding*100) + "%"} />
-      <StatsView name="Upvotes Last 20 Seconds:" value={this.state.downvotes_last_period} />
+  <div id="data_container" className="analytics">
+    <img id="status-moodle" className="center-block pure-img" src= 
+      {this.state.passed_warning_threshold?
+        "/static/assets/images/lost_icon.svg" :
+        "/static/assets/images/understanding_icon_v2.svg"} />
+    <div className="row analytics">
+      <div className="leftcol">
+        <StatsView name="Average Understanding:" value={Math.round(this.state.average_understanding*100) + "%"} />
+      </div>
+      <div className="rightcol">
+        <StatsView name="Concerns Last 20 Seconds:" value={this.state.downvotes_last_period} />
+      </div>
     </div>
   </div>
 </div>

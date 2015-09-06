@@ -31,20 +31,53 @@ li a.in_progress {
   }
 }
 
+#data-graph {
+  height: 100%;
+}
+
+#status-moodle {
+  height: 30%;
+  width: 30%;
+  display: block;
+}
+
+
 div {
   .analytics {
     display: block;
   }
 
-  #checkbox {
-    float: left;
+  #analytics_root {
+    #chart_container {
+      width: 100%;
+      height: 70%;
+    }
+    #data_container {
+      width: 100%;
+      height: auto;
+    }
   }
 
-  #stats {
-    float: right;
+  .row{
+    height: 10%;
+    width: 100%;
+    overflow: auto;
+
+    .leftcol {
+      display: inline-block;
+      float: left;
+      width: 50%;
+    }
+
+    .rightcol {
+      display: inline-block;
+      float: right;
+      width: 50%;
+    }
   }
 
   .stats_root {
+    margin: 5px;
     border: 2px solid grey;
     border-radius: 0.5em;
   }
@@ -64,16 +97,7 @@ div {
   }
 }
 
-#analytics_root {
-  #chart_container {
-    width: 100%;
-    height: 40%;
-  }
-  #data_container {
-    width: 100%;
-    height: 60%;
-  }
-}
+
 
 #vote-back {
   height: 100%;
