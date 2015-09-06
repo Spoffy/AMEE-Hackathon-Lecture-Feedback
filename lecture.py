@@ -74,7 +74,7 @@ class Session:
     return percentage
 
   def period_understanding_formatted(self):
-    return "{0:d}% of {1:d}".format(self.period_understanding(), len(self.votes_in_period))
+    return "{0:.0f}% of {1:.0f}".format(self.period_understanding(), len(self.votes_in_period))
 
   def value_last_period(self, value):
     self.trim_period()
