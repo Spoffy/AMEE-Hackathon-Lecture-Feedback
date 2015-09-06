@@ -38,6 +38,7 @@ var CommentsBox = React.createClass({
   render: function() {
     return( 
       <div className="commentBox">
+        <div className="header">Comments</div>
         {this.generateCommentDoms()}
       </div>
     );
