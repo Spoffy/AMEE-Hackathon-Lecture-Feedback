@@ -103,12 +103,20 @@ test_comments = [
   new_comment("Rabbit")
 ]
 
+def convert_time(comment):
+  delta = time() - comment['time'];
+  minutes = delta/60;
+  return {"question": comment['question'], "time": "{0:.0f} minutes ago".format(minutes)}
+
+def convert_times(comments):
+  return [convert_time(comment) for comment in comments]
+
 @app.post('/post/comments')
 def post_comments():
   user_id = request.cookies.user_id
   if not user_id in SPEAKERS: return;
   #return json.dumps(lecture.get_comments(user_id))
-  return json.dumps(test_comments)
+  return json.dumps(convert_times(test_comments))
 
 @app.get('/')
 def default_page():

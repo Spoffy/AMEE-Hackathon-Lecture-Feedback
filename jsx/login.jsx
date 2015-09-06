@@ -19,7 +19,7 @@ var Login = React.createClass({
     return (
 
 <div>
-  <img src="/static/assets/images/Caduceus_v2.svg"
+  <img src="/static/assets/images/lec_loop_v2.svg"
        className="pure-img center-block"
        id="login-logo"/>
 
