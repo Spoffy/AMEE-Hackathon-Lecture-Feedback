@@ -56,13 +56,16 @@ var FeedbackPanel = React.createClass({
   },
 
   submitComment: function(event) {
-    var comment = $("#comment-form textarea").val();
+    var textarea = $("#comment-form textarea");
+    var comment = textarea.val();
     $.ajax({
       type: "POST",
       url: "/post/comment",
       data: JSON.stringify({comment: comment}),
       contentType: "application/json"
     });
+    textarea.val("");
+    textarea.attr("placeholder", "Comment submitted!");
     event.preventDefault();
   },
 
