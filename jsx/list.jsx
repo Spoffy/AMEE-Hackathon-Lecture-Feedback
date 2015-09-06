@@ -14,7 +14,7 @@ var List = React.createClass({
   createListItem: function(name) {
     var that = this;
     return (
-      <li key={"listItem" + name} className="pure-menu-item" 
+      <li key={"listItem" + name} className="pure-menu-item fix-onclick" 
           onClick={function() {that.itemSelected(name);}}>
         <a className="pure-menu-link">
           {name}
