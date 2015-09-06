@@ -1,3 +1,42 @@
+var CommentsBox = React.createClass({
+  getInitialState: function() {
+    return {comments: []};
+  },
+  updateComments: function() {
+    var that = this;
+    $.ajax({
+      type: "POST",
+      url: "/post/comments",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+        that.setState({comments: data});
+      }
+    });
+  },
+  componentWillMount: function() {
+    this.updateComments();
+  },
+  createComment: function(comment) {
+    return (
+    <div className="comment">
+      <div className="body"> {comment.question} </div>
+      <div className="time"> {comment.time} </div>
+    </div>
+    );
+  },
+  generateCommentDoms: function() {
+    return this.state.comments.map(this.createComment);
+  },
+  render: function() {
+    return( 
+      <div className="commentBox">
+        {this.generateCommentDoms()}
+      </div>
+    );
+  }
+});
+
 var StatsView = React.createClass({
   render: function() {
     return (
@@ -62,22 +101,14 @@ var Analytics = React.createClass({
     return (
     
 <div id="analytics_root">
-  <div id="chart_container" className="analytics">
-    <img id="data-graph" className="center-block pure-img" src="/static/assets/images/data_graph.svg" />
-  </div> 
+   
   <div id="data_container" className="analytics">
     <img id="status-moodle" className="center-block pure-img" src= 
       {this.state.passed_warning_threshold?
         "/static/assets/images/lost_icon.svg" :
         "/static/assets/images/understanding_icon_v2.svg"} />
-    <div className="row analytics">
-      <div className="leftcol">
-        <StatsView name="Average Understanding:" value={this.state.period_understanding} />
-      </div>
-      <div className="rightcol">
-        <StatsView name={"Concerns - Last " + this.state.vote_lifetime +  " Seconds:"} value={this.state.downvotes_last_period} />
-      </div>
-    </div>
+    <CommentsBox />
+    
     <img id='analytics-back' className="pure-img"
          src="/static/assets/images/back_arrow.svg"
          onClick={this.props.toPreviousScreen}/>

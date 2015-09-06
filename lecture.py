@@ -24,6 +24,7 @@ class Session:
     self.votes = list()
     self.votes_in_period = list()
     self.start_time = time()
+    self.comments = list()
 
   def add_user(self, user_id):
     self.participants.add(user_id)
@@ -116,6 +117,14 @@ def value_last_period(user_id, value):
 def has_passed_warning_threshold(user_id):
   session = _user_sessions[user_id]
   return session.has_passed_warning_threshold();
+
+def add_comment(user_id, comment):
+  session = _user_sessions[user_id]
+  session.comments.append((comment, time()))
+
+def get_comments(user_id):
+  session = _user_sessions[user_id]
+  return session.comments
 
 def test():
   add_to_session("Course", "John")

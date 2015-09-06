@@ -3,6 +3,7 @@ import base64
 import hashlib
 import json
 import lecture
+from time import time
 
 STATIC_FILE_PREFIX='static'
 COURSES = [
@@ -83,6 +84,31 @@ def analytics():
       lecture.has_passed_warning_threshold(user_id),
     "vote_lifetime": lecture.VOTE_LIFETIME
   });
+
+@app.post('/post/comment')
+def add_comment():
+  user_id = request.cookies.user_id
+  lecture.add_comment(user_id, request.json['comment'])
+
+def new_comment(q):
+  return {
+    "question": q,
+    "time": time()
+  }
+
+test_comments = [
+  new_comment("Hello"),
+  new_comment("I"),
+  new_comment("Am a total"),
+  new_comment("Rabbit")
+]
+
+@app.post('/post/comments')
+def post_comments():
+  user_id = request.cookies.user_id
+  if not user_id in SPEAKERS: return;
+  #return json.dumps(lecture.get_comments(user_id))
+  return json.dumps(test_comments)
 
 @app.get('/')
 def default_page():
