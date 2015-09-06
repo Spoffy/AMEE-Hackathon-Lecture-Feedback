@@ -4,7 +4,7 @@ var Login = React.createClass({
   },
   sendFormData: function(event) {
     var data = JSON.stringify({
-      username: $('input[id="username"]').val()
+      email: $('input[id="email"]').val()
     });
     $.ajax({
       type: "POST",
@@ -27,8 +27,8 @@ var Login = React.createClass({
   <div className="pure-g">
     <form className="center-text pure-form pure-form-stacked">
       <fieldset>
-        <label className="pure-u-5-5 center-block" for="username">Username</label>
-        <input className="pure-u-5-5 center-block" id="username" type="email" placeholder="Email"/>
+        <label className="pure-u-5-5 center-block" for="email">Username</label>
+        <input className="pure-u-5-5 center-block" id="email" type="email" placeholder="Email"/>
         <button id="submit" 
                 onClick={this.sendFormData}
                 className="pure-u-2-5 pure-button pure-button-primary">
