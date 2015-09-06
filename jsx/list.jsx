@@ -1,6 +1,12 @@
 var List = React.createClass({
   itemSelected: function(name) {
     this.props.onCourseSelected(name);
+    $.ajax({
+      method: "POST",
+      url: "/post/select",
+      data: JSON.stringify({"course": name}),
+      contentType: "application/json"
+    });
   },
   createListItem: function(name) {
     var that = this;

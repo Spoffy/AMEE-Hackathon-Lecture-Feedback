@@ -2,6 +2,7 @@ from bottle import Bottle, post, get, run, static_file, redirect, request, respo
 import base64
 import hashlib
 import json
+import lecture
 
 STATIC_FILE_PREFIX='static'
 
@@ -24,8 +25,28 @@ def login():
   email = request.json.get("email", None);
   if not email: return json.dumps(["No email given."]);
   user_id = create_hash(email)
+  print(email, " has logged in as ", user_id)
   response.set_cookie("user_id", user_id)
   return json.dumps(get_courses_for_user(user_id))
+
+@app.post('/post/select')
+def select():
+  course = request.json["course"]
+  user_id = request.cookies.user_id
+  print("Adding ", user_id, " to ", course)
+  lecture.add_to_session(course, user_id)
+
+@app.post('/post/upvote')
+def upvote():
+  user_id = request.cookies.user_id
+  print(user_id, " is upvoting their session")
+  lecture.upvote(user_id)
+
+@app.post('/post/downvote')
+def downvote():
+  user_id = request.cookies.user_id
+  print(user_id, " is downvoting their session")
+  lecture.downvote(user_id)
 
 @app.get('/')
 def default_page():
