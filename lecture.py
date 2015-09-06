@@ -71,15 +71,18 @@ class Session:
     #Magic numbers map from range -1 to 1 to 0 to 1 (a.k.a a percentage)
     valueInRange = ((_sum_votes_iter(self.votes_in_period)/len(self.votes_in_period)) + 1)/2
     percentage = round(valueInRange * 100)
-    return "{0:d}% of {1:d}".format(percentage, len(self.votes_in_period))
+    return percentage
+
+  def period_understanding_formatted(self):
+    return "{0:d}% of {1:d}".format(self.period_understanding(), len(self.votes_in_period))
 
   def value_last_period(self, value):
     self.trim_period()
     return len([x for x in self.votes_in_period if x[2] == value])
 
   def has_passed_warning_threshold(self):
-    return (self.value_last_period(-1) > 
-           len(self.participants) * WARNING_PERCENT_THRESHOLD)
+    return self.period_understanding() < 50;
+           
       
 
 def init_course_session(course):
@@ -108,7 +111,7 @@ def downvote(user_id):
 
 def period_understanding(user_id):
   session = _user_sessions[user_id]
-  return session.period_understanding();
+  return session.period_understanding_formatted();
 
 def value_last_period(user_id, value):
   session = _user_sessions[user_id]
