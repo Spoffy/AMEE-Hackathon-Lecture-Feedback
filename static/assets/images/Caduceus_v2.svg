@@ -11,9 +11,9 @@
    version="1.1"
    x="0"
    y="0"
-   width="299"
-   height="356"
-   viewBox="0, 0, 299, 356"
+   width="142.58719"
+   height="280.28244"
+   viewBox="0 0 142.58719 280.28244"
    id="svg17200"
    inkscape:version="0.91 r13725"
    sodipodi:docname="Caduceus_v2.svg">
@@ -58,16 +58,17 @@
     <marker
        inkscape:stockid="TriangleOutL"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="TriangleOutL"
        style="overflow:visible"
        inkscape:isstock="true">
       <path
          id="path26319"
-         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         transform="scale(0.8)" />
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8,0.8)"
+         inkscape:connector-curvature="0" />
     </marker>
     <linearGradient
        inkscape:collect="always"
@@ -105,16 +106,21 @@
      showgrid="false"
      showguides="true"
      inkscape:zoom="2.5449438"
-     inkscape:cx="149.5"
-     inkscape:cy="178"
+     inkscape:cx="-10.044154"
+     inkscape:cy="140.99447"
      inkscape:window-x="8"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2" />
+     inkscape:current-layer="layer4"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="caduceus">
+     inkscape:label="caduceus"
+     transform="translate(-78.206405,-38.712028)">
     <g
        id="layer1"
        transform="matrix(0.49147257,0,0,0.49147257,77.162026,90.275454)"
@@ -232,7 +238,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="whitespace"
-     sodipodi:insensitive="true">
+     transform="translate(-78.206405,-38.712028)">
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#600000;stroke-opacity:0"
        id="rect12630"
@@ -244,7 +250,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="arrows">
+     inkscape:label="arrows"
+     transform="translate(-78.206405,-38.712028)">
     <path
        style="fill:url(#linearGradient31550);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 138.64069,81.357636 0,17.264006 c 2.96876,5.399408 1.19575,9.314428 0,10.879188 -0.19242,0.50062 -0.92087,1.33111 -1.44315,1.87296 -0.48105,0.81674 -0.7147,1.09745 -0.94835,1.58433 0.0674,0.58413 1.70165,2.40525 3.41836,2.86568 1.11197,0.21303 1.72914,-0.23365 2.59371,-0.35048 l 3.19158,-0.0412 0.19387,14.96749 5.96647,-0.24739 0.7755,-14.7201 c 6.20976,0.20614 9.6157,0.1237 10.17658,-1.77301 -0.86589,-1.41357 -2.02041,-2.82714 -2.68013,-4.69427 -0.61849,-2.11453 -1.40191,-4.97125 0,-8.94125 l 0,-18.665924 21.26506,0 -31.89759,-42.645638 -31.89759,42.645638 z"
