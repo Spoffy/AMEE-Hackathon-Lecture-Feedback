@@ -25,7 +25,7 @@ var Login = React.createClass({
        id="login-logo"/>
 
   <div className="pure-g">
-    <form className="center-text pure-form pure-form-stacked">
+    <form className="pure-u-5-5 center-text pure-form pure-form-stacked">
       <fieldset>
         <label className="pure-u-5-5 center-block" for="email">Username</label>
         <input className="pure-u-5-5 center-block" id="email" type="email" placeholder="Email"/>
