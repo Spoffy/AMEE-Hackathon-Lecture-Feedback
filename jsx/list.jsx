@@ -15,6 +15,12 @@ var List = React.createClass({
     });
   },
 
+  componentDidUpdate: function() {
+    $("li").each(function(index) {
+      $(this).fitText();
+    });
+  },
+
   itemSelected: function(name) {
     var that = this;
     $.ajax({
@@ -32,7 +38,7 @@ var List = React.createClass({
     var that = this;
     return (
       <li key={"listItem" + course.name} 
-          className="pure-menu-item fix-onclick" 
+          className="pure-menu-item fix-onclick transitionless" 
           onClick={function() {that.itemSelected(course.name);}}>
         <a className={"pure-menu-link "
           + (course.in_progress? "in_progress" : "")}>

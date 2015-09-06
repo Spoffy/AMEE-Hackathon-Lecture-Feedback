@@ -122,6 +122,14 @@ div {
   .animate-resize;
 }
 
+.transitionless {
+  transition: none;
+  
+  * {
+    transition: none;
+  }
+}
+
 #login-logo {
   @media screen and (min-height: @screen-sm-h) {
     height: (@screen-sm-h/2);
