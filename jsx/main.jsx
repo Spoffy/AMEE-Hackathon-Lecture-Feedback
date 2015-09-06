@@ -6,10 +6,9 @@ var MainBody = React.createClass({
     }
   },
 
-  changeToCourseList: function(courses) {
+  changeToCourseList: function() {
     this.setState({
       current_screen: 1,
-      courses: courses
     });
   },
 
@@ -22,8 +21,7 @@ var MainBody = React.createClass({
       case 0:
         return <Login onSuccess={this.changeToCourseList}/>
       case 1:
-        return <List onCourseSelected={this.onCourseSelected} 
-                     items={this.state.courses}/>;
+        return <List onCourseSelected={this.onCourseSelected}/>;
       case 2:
         return <FeedbackPanel />
     }

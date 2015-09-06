@@ -1,6 +1,6 @@
 var Login = React.createClass({
-  loginCallback: function(data) {
-    this.props.onSuccess(data);
+  loginCallback: function() {
+    this.props.onSuccess();
   },
   sendFormData: function(event) {
     var data = JSON.stringify({
@@ -11,7 +11,6 @@ var Login = React.createClass({
       url: "/post/login",
       data: data,
       contentType: "application/json",
-      dataType: "json",
       success: this.loginCallback
     });
     event.preventDefault();

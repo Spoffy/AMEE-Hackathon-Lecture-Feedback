@@ -27,6 +27,10 @@ def login():
   user_id = create_hash(email)
   print(email, " has logged in as ", user_id)
   response.set_cookie("user_id", user_id)
+
+@app.post('/post/courses')
+def course_list():
+  user_id = request.cookies.user_id
   return json.dumps(get_courses_for_user(user_id))
 
 @app.post('/post/select')
@@ -56,4 +60,4 @@ def default_page():
 def serve_static(path):
   return static_file(path, root=STATIC_FILE_PREFIX)
 
-run(app, host='localhost', port=8080)
+run(app, host='localhost', port=8080, quiet=False)

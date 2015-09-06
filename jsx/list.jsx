@@ -1,6 +1,19 @@
 var List = React.createClass({
-  //componentDidMount: function() {
-  //  $("ul > li
+  getInitialState: function() {
+    return {items: []};
+  },
+
+  componentWillMount: function() {
+    var that = this;
+    $.ajax({
+      type: "POST",
+      url: "/post/courses",
+      dataType: "json",
+      success: function(data) {
+        that.setState({items: data});
+      }
+    });
+  },
 
   itemSelected: function(name) {
     this.props.onCourseSelected(name);
@@ -24,7 +37,7 @@ var List = React.createClass({
   render: function() {
     var that = this;
     var menuItems = [];
-    $.each(this.props.items, function(index, value) {
+    $.each(this.state.items, function(index, value) {
       menuItems.push(that.createListItem(value));
     });
     return (

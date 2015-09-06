@@ -51,6 +51,10 @@ var FeedbackPanel = React.createClass({
     $.post("/post/downvote")
   },
 
+  back: function() {
+    this.props.toPreviousScreen();
+  },
+
   render: function() {
     return (
 <div>
@@ -67,6 +71,7 @@ var FeedbackPanel = React.createClass({
   <div id="navbar">
     <img id="vote-back"
          className="pure-img"
+         onClick={this.back}
          src="/static/assets/images/back_arrow.svg"/>
   </div>
 </div>
