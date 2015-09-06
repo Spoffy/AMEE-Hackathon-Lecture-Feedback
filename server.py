@@ -115,8 +115,8 @@ def convert_times(comments):
 def post_comments():
   user_id = request.cookies.user_id
   if not user_id in SPEAKERS: return;
-  #return json.dumps(lecture.get_comments(user_id))
-  return json.dumps(convert_times(test_comments))
+  return json.dumps(convert_times(lecture.get_comments(user_id)))
+  #return json.dumps(convert_times(test_comments))
 
 @app.get('/')
 def default_page():

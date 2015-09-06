@@ -120,7 +120,10 @@ def has_passed_warning_threshold(user_id):
 
 def add_comment(user_id, comment):
   session = _user_sessions[user_id]
-  session.comments.append((comment, time()))
+  session.comments.append({
+    "question": comment,
+    "time": time()
+  });
 
 def get_comments(user_id):
   session = _user_sessions[user_id]

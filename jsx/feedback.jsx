@@ -55,6 +55,17 @@ var FeedbackPanel = React.createClass({
     this.props.toPreviousScreen();
   },
 
+  submitComment: function(event) {
+    var comment = $("#comment-form textarea").val();
+    $.ajax({
+      type: "POST",
+      url: "/post/comment",
+      data: JSON.stringify({comment: comment}),
+      contentType: "application/json"
+    });
+    event.preventDefault();
+  },
+
   render: function() {
     return (
 <div>
@@ -67,6 +78,15 @@ var FeedbackPanel = React.createClass({
          className="vote-button pure-img" 
          onClick={this.downvotePushed}
          src="/static/assets/images/negative_arrow.svg"/>
+  </div>
+  <div id="comment-form" className="center-block">
+    <form className="pure-form pure-form-stacked">
+      <legend className="center-block">Comment/Question</legend>
+      <fieldset>
+        <textarea placeholder="Enter comment here"></textarea>
+      </fieldset>
+      <button onClick={this.submitComment} className="pure-button pure-button-primary">Login</button>
+    </form>
   </div>
   <div id="navbar">
     <img id="vote-back"
