@@ -4,7 +4,7 @@ var FeedbackPanel = React.createClass({
     var upvoteButton = $("#upvote");
     var downvoteButton = $("#downvote");
     var lastSize = 0;
-    this.resizeTimer = setInterval(function() {
+    var resize = function() {
       var jWindow = $(window);
       var size = 0;
       if(jWindow.height() < jWindow.width() * 2) {
@@ -20,7 +20,9 @@ var FeedbackPanel = React.createClass({
         downvoteButton.css("width", size);
         lastSize = size;
       }
-    }, 1000);
+    };
+    resize();
+    this.resizeTimer = setInterval(resize, 400);
   },
 
   componentWillUnmount: function() {
