@@ -1,7 +1,6 @@
 var FeedbackPanel = React.createClass({
   setSquareSize: function(obj, size) {
     obj.css("height", size);
-    obj.css("width", size);
   },
 
   componentDidMount: function() {
@@ -9,20 +8,18 @@ var FeedbackPanel = React.createClass({
     var that = this;
     that.upvoteButton = $("#upvote");
     that.downvoteButton = $("#downvote");
-    that.currentSize = 0;
+    that.voteContainer = $("#vote_container");
+    that.navbar = $("#navbar");
+    that.height = 0;
     var resize = function() {
       var jWindow = $(window);
-      var size = 0;
-      if(jWindow.height() < jWindow.width() * 2) {
-        size = jWindow.height()/2;
-      } else {
-        size = jWindow.width();
-      }
+      var voteHeight = jWindow.height() * 0.85;
+      var navHeight = jWindow.height() * 0.10;
 
-      if(that.currentSize != size) {
-        that.setSquareSize(that.upvoteButton, size)
-        that.setSquareSize(that.downvoteButton, size)
-        that.currentSize = size;
+      if(that.height != jWindow.height()) {
+        that.voteContainer.css("height", voteHeight);
+        that.navbar.css("height", navHeight);
+        that.height = jWindow.height();
       }
     };
     resize();
@@ -38,9 +35,9 @@ var FeedbackPanel = React.createClass({
 
   animateButton: function(button) {
     var that = this;
-    that.setSquareSize(button, that.currentSize * 0.9);
+    that.setSquareSize(button, "44%");
     setTimeout(function() {
-      that.setSquareSize(button, that.currentSize);
+      that.setSquareSize(button, "49%");
     }, 200);
   },
 
@@ -56,16 +53,22 @@ var FeedbackPanel = React.createClass({
 
   render: function() {
     return (
-
-<div id="vote_container">
-  <img id="upvote" 
-       className="vote-button pure-img" 
-       onClick={this.upvotePushed}
-       src="/static/assets/images/positive_arrow.svg"/>
-  <img id="downvote" 
-       className="vote-button pure-img" 
-       onClick={this.downvotePushed}
-       src="/static/assets/images/negative_arrow.svg"/>
+<div>
+  <div id="vote_container">
+    <img id="upvote" 
+         className="vote-button pure-img" 
+         onClick={this.upvotePushed}
+         src="/static/assets/images/positive_arrow.svg"/>
+    <img id="downvote" 
+         className="vote-button pure-img" 
+         onClick={this.downvotePushed}
+         src="/static/assets/images/negative_arrow.svg"/>
+  </div>
+  <div id="navbar">
+    <img id="vote-back"
+         className="pure-img"
+         src="/static/assets/images/back_arrow.svg"/>
+  </div>
 </div>
 
     );
