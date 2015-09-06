@@ -18,7 +18,7 @@ var StatsView = React.createClass({
 var Analytics = React.createClass({
   getInitialState: function() {
     return {
-      average_understanding: "Pending",
+      period_understanding: "Pending",
       downvotes_last_period: "Pending",
       upvotes_last_period: "Pending"
     }
@@ -44,10 +44,11 @@ var Analytics = React.createClass({
       $.post("/post/analytics", null,
         function(data) {
           that.setState({
-            average_understanding: data.average_understanding,
+            period_understanding: data.period_understanding,
             downvotes_last_period: data.downvotes_last_period,
             upvotes_last_period: data.upvotes_last_period,
-            passed_warning_threshold: data.passed_warning_threshold
+            passed_warning_threshold: data.passed_warning_threshold,
+            vote_lifetime: data.vote_lifetime
           });
         },
         "json"
@@ -71,12 +72,15 @@ var Analytics = React.createClass({
         "/static/assets/images/understanding_icon_v2.svg"} />
     <div className="row analytics">
       <div className="leftcol">
-        <StatsView name="Average Understanding:" value={Math.round(this.state.average_understanding*100) + "%"} />
+        <StatsView name="Average Understanding:" value={this.state.period_understanding} />
       </div>
       <div className="rightcol">
-        <StatsView name="Concerns Last 20 Seconds:" value={this.state.downvotes_last_period} />
+        <StatsView name={"Concerns - Last " + this.state.vote_lifetime +  " Seconds:"} value={this.state.downvotes_last_period} />
       </div>
     </div>
+    <img id='analytics-back' className="pure-img"
+         src="/static/assets/images/back_arrow.svg"
+         onClick={this.props.toPreviousScreen}/>
   </div>
 </div>
     

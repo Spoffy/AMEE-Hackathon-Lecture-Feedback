@@ -29,7 +29,7 @@ var MainBody = React.createClass({
       case 2:
         return <FeedbackPanel toPreviousScreen={this.changeToCourseList} />
       case 3:
-        return <Analytics />
+        return <Analytics toPreviousScreen={this.changeToCourseList}/>
     }
   }
 });

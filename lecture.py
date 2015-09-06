@@ -1,7 +1,7 @@
 from time import time
 from functools import reduce
 
-WARNING_PERIOD = 2
+VOTE_LIFETIME = 180
 WARNING_PERCENT_THRESHOLD = 0.1
 SESSION_DEATH_DELAY = 60 * 60 #1hr
 
@@ -39,7 +39,7 @@ class Session:
     return True
 
   def trim_period(self):
-    threshold_time = time() - WARNING_PERIOD
+    threshold_time = time() - VOTE_LIFETIME
     count = 0
     for (timestamp, _, _) in self.votes_in_period:
       if timestamp > threshold_time:
@@ -65,11 +65,12 @@ class Session:
   def downvote(self, user_id):
     self.vote(user_id, -1)
 
-  def avg_understanding(self):
-    if not len(self.votes): return 0
-    print("Made it past self.votes!")
+  def period_understanding(self):
+    if not len(self.votes_in_period): return "No activity!"
     #Magic numbers map from range -1 to 1 to 0 to 1 (a.k.a a percentage)
-    return ((_sum_votes_iter(self.votes)/len(self.votes)) + 1)/2
+    valueInRange = ((_sum_votes_iter(self.votes_in_period)/len(self.votes_in_period)) + 1)/2
+    percentage = round(valueInRange * 100)
+    return "{0:d}% of {1:d}".format(percentage, len(self.votes_in_period))
 
   def value_last_period(self, value):
     self.trim_period()
@@ -104,9 +105,9 @@ def downvote(user_id):
   session = _user_sessions[user_id]
   session.downvote(user_id)
 
-def avg_understanding(user_id):
+def period_understanding(user_id):
   session = _user_sessions[user_id]
-  return session.avg_understanding();
+  return session.period_understanding();
 
 def value_last_period(user_id, value):
   session = _user_sessions[user_id]

@@ -76,11 +76,12 @@ def analytics():
   user_id = request.cookies.user_id
   if not user_id in SPEAKERS: return;
   return json.dumps({
-    "average_understanding": lecture.avg_understanding(user_id),
+    "period_understanding": lecture.period_understanding(user_id),
     "upvotes_last_period": lecture.value_last_period(user_id, 1),
     "downvotes_last_period":lecture.value_last_period(user_id, -1),
     "passed_warning_threshold": 
-      lecture.has_passed_warning_threshold(user_id)
+      lecture.has_passed_warning_threshold(user_id),
+    "vote_lifetime": lecture.VOTE_LIFETIME
   });
 
 @app.get('/')
