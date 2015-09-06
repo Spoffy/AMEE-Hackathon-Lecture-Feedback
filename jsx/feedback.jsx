@@ -85,7 +85,7 @@ var FeedbackPanel = React.createClass({
       <fieldset>
         <textarea placeholder="Enter comment here"></textarea>
       </fieldset>
-      <button onClick={this.submitComment} className="pure-button pure-button-primary">Login</button>
+      <button onClick={this.submitComment} className="pure-button pure-button-primary">Submit Comment</button>
     </form>
   </div>
   <div id="navbar">

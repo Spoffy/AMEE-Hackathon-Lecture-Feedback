@@ -17,6 +17,13 @@ var CommentsBox = React.createClass({
   componentWillMount: function() {
     this.updateComments();
   },
+  componentDidMount: function() {
+    var that = this;
+    setInterval(function() {
+      that.updateComments()
+    }, 1000);
+  },
+
   createComment: function(comment) {
     return (
     <div className="comment">
