@@ -17,8 +17,16 @@ def create_hash(text):
   hash_obj.update(text.encode("utf-8"))
   return base64.b64encode(hash_obj.digest()).decode("ascii")
 
+def create_course(name, in_progress=False):
+  return {"name": name, "in_progress": in_progress}
+
 def get_courses_for_user(user_id):
-  return ["Sample Course 1", "Sample Course 2", "Sample Course 3"]
+  return [
+    create_course("Sample Course 1"),
+    create_course("Sample Course 2"),
+    create_course("Sample Course 3", True),
+    create_course("Sample Course 4")
+  ]
 
 @app.post('/post/login')
 def login():

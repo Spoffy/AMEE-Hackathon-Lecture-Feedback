@@ -28,9 +28,9 @@ var FeedbackPanel = React.createClass({
 
   componentWillUnmount: function() {
     clearInterval(this.resizeTimer);
-    this.upvoteButton = nil;
-    this.downvoteButton = nil;
-    this.resizeTimer = nil;
+    this.upvoteButton = null;
+    this.downvoteButton = null;
+    this.resizeTimer = null;
   },
 
   animateButton: function(button) {

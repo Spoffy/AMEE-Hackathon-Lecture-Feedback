@@ -24,13 +24,15 @@ var List = React.createClass({
       contentType: "application/json"
     });
   },
-  createListItem: function(name) {
+  createListItem: function(course) {
     var that = this;
     return (
-      <li key={"listItem" + name} className="pure-menu-item fix-onclick" 
-          onClick={function() {that.itemSelected(name);}}>
-        <a className="pure-menu-link">
-          {name}
+      <li key={"listItem" + course.name} 
+          className="pure-menu-item fix-onclick" 
+          onClick={function() {that.itemSelected(course.name);}}>
+        <a className={"pure-menu-link "
+          + (course.in_progress? "in_progress" : "")}>
+          {course.name}
         </a>
       </li>);
   },

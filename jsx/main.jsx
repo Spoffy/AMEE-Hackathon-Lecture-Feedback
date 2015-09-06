@@ -23,7 +23,7 @@ var MainBody = React.createClass({
       case 1:
         return <List onCourseSelected={this.onCourseSelected}/>;
       case 2:
-        return <FeedbackPanel />
+        return <FeedbackPanel toPreviousScreen={this.changeToCourseList} />
     }
   }
 });

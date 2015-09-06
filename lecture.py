@@ -57,6 +57,10 @@ class Session:
     self.trim_period()
     self.check_for_events()
 
+    print("Votes: ", self.votes)
+    print("VL: ", len(self.votes))
+    print("VIP: ", len(self.votes_in_period))
+
   def upvote(self, user_id):
     self.vote(user_id, 1)
 
