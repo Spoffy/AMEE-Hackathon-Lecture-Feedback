@@ -31,8 +31,48 @@ li a.in_progress {
   }
 }
 
-div.analytics {
-  display: block;
+div {
+  .analytics {
+    display: block;
+  }
+
+  #checkbox {
+    float: left;
+  }
+
+  #stats {
+    float: right;
+  }
+
+  .stats_root {
+    border: 2px solid grey;
+    border-radius: 0.5em;
+  }
+  
+  .stats_label {
+    border-bottom: 1px solid #AAAAAA;
+    padding: 5px;
+  }
+
+  .stats_value_area {
+    text-align: right;
+  }
+
+  .stats_value {
+    padding: 5px;
+    display: inline-block;
+  }
+}
+
+#analytics_root {
+  #chart_container {
+    width: 100%;
+    height: 40%;
+  }
+  #data_container {
+    width: 100%;
+    height: 60%;
+  }
 }
 
 #vote-back {

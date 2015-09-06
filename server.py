@@ -71,6 +71,16 @@ def downvote():
   print(user_id, " is downvoting their session")
   lecture.downvote(user_id)
 
+@app.post('/post/analytics')
+def analytics():
+  user_id = request.cookies.user_id
+  if not user_id in SPEAKERS: return;
+  return json.dumps({
+    "average_understanding": lecture.avg_understanding(user_id),
+    "upvotes_last_period": lecture.value_last_period(user_id, 1),
+    "downvotes_last_period":lecture.value_last_period(user_id, -1)
+  });
+
 @app.get('/')
 def default_page():
   return redirect("/static/pages/index.html")

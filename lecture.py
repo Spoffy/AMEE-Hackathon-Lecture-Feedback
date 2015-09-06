@@ -1,4 +1,5 @@
 from time import time
+from functools import reduce
 
 WARNING_PERIOD = 2
 WARNING_PERCENT_THRESHOLD = 0.1
@@ -6,6 +7,12 @@ SESSION_DEATH_DELAY = 60 * 60 #1hr
 
 _course_sessions = dict()
 _user_sessions = dict()
+
+def _sum_votes_iter(iterable):
+    def sumFunc(total, voteEntry):
+      (_, _, vote) = voteEntry
+      return total + vote
+    return reduce(sumFunc, iterable, 0)
 
 class SessionTimeoutError(Exception):
   None
@@ -67,6 +74,16 @@ class Session:
   def downvote(self, user_id):
     self.vote(user_id, -1)
 
+  def avg_understanding(self):
+    if not len(self.votes): return 0
+    print("Made it past self.votes!")
+    #Magic numbers map from range -1 to 1 to 0 to 1 (a.k.a a percentage)
+    return ((_sum_votes_iter(self.votes)/len(self.votes)) + 1)/2
+
+  def value_last_period(self, value):
+    return len([x for x in self.votes_in_period if x[2] == value])
+      
+
 def init_course_session(course):
   session = None
   try:
@@ -91,6 +108,14 @@ def downvote(user_id):
   session = _user_sessions[user_id]
   session.downvote(user_id)
 
+def avg_understanding(user_id):
+  session = _user_sessions[user_id]
+  return session.avg_understanding();
+
+def value_last_period(user_id, value):
+  session = _user_sessions[user_id]
+  return session.value_last_period(value)
+
 def test():
   add_to_session("Course", "John")
   add_to_session("Course", "James")
@@ -103,3 +128,4 @@ def test():
   print(session.is_active())
   print(session.trim_period())
   print(session.check_for_events())
+
